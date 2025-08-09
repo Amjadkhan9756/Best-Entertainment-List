@@ -6,6 +6,9 @@ const Content = require("./schemas/ContentSchema.js");
 
 const app = express();
 app.use(express.json());
+const cors = require("cors");
+app.use(cors());
+
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI)
