@@ -18,6 +18,11 @@ const ContentSchema = new mongoose.Schema({
     imageUrl: String,
 });
 
+
 const Content = mongoose.model("Content", ContentSchema);
 
-module.exports = Content;
+module.exports = Content; //Moies
+
+// const Web = mongoose.model("Web", ContentSchema);
+
+// module.exports = Web; //webs
