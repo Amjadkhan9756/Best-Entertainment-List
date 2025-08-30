@@ -4,14 +4,26 @@ const Navbar = () => {
   return (
     <>
       <div className="row">
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
-          <div className="container col-2">
+        <nav
+          className="navbar navbar-expand-lg"
+          style={{ backgroundColor: "lightpink", minHeight: "80px" }}
+        >
+          {/* Logo Section */}
+          <div className="container col-2 d-flex align-items-center">
             <img
               src="/image/Monogram ER Logo Design By Vectorseller _ TheHungryJPEG.jpeg"
               alt="Logo"
-              style={{ width: "100px", height: "70px" }}
+              style={{
+                width: "70px",          // fixed width
+                height: "70px",         // fixed height
+                objectFit: "cover",     // prevents stretching
+                borderRadius: "50%",    // makes it circular
+                border: "2px solid white", // optional white border
+              }}
             />
           </div>
+
+          {/* Links & Search */}
           <div className="container-fluid">
             <div
               className="collapse navbar-collapse"
@@ -44,12 +56,15 @@ const Navbar = () => {
                   </Link>
                 </li>
               </ul>
+
+              {/* Search bar */}
               <form className="d-flex" role="search">
                 <input
                   className="form-control me-2"
                   type="search"
                   placeholder="Search"
                   aria-label="Search"
+                  style={{ borderRadius: "20px" }}
                 />
                 <button className="btn btn-outline-success" type="submit">
                   Search

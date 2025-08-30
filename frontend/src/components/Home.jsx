@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+import "./Home.css";
+
 function Home() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -33,11 +35,11 @@ function Home() {
       style={{
         width: "100%",
         padding: "20px",
-        backgroundColor: "black",
+        backgroundColor: "",
         color: "#fff",
       }}
     >
-      <h1 style={{ margin: "10px", padding: "15px" }}>
+      <h1 style={{ margin: "10px", padding: "15px" ,color:"black"}}>
         🎬 Top Movies to Watch
       </h1>
 
