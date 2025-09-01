@@ -23,10 +23,7 @@ function Home() {
       });
   }, []);
 
-  if (loading)
-    return (
-      <div style={{ alignItems: "center", color: "black" }}>Loading...</div>
-    );
+  if (loading) return <div>Loading...</div>;
 
   if (error) return <div>Error: {error}</div>;
 
@@ -35,31 +32,33 @@ function Home() {
       style={{
         width: "100%",
         padding: "20px",
-        backgroundColor: "",
         color: "#fff",
       }}
     >
-      <h1 style={{ margin: "10px", padding: "15px" ,color:"black"}}>
+      <h1 style={{ margin: "10px", padding: "15px", color: "black" }}>
         🎬 Top Movies to Watch
       </h1>
 
       {/* ✅ SCROLL CONTAINER */}
       <div
         style={{
-          overflowX: "hidden",
-          paddingBottom: "8px",
+          display: "flex",
+          overflowX: "auto",
+          gap: "20px",
+          paddingBottom: "10px",
+
+          /* 👇 Invisible scrollbar tricks */
+          scrollbarWidth: "none", // Firefox
+          msOverflowStyle: "none", // IE/Edge
         }}
-        onMouseEnter={(e) => (e.currentTarget.style.overflowX = "auto")}
-        onMouseLeave={(e) => (e.currentTarget.style.overflowX = "hidden")}
       >
         <ul
           style={{
             display: "flex",
-            flex: "0 0 auto",
+            gap: "20px",
             listStyle: "none",
-            gap: "10px",
-            padding: "10px",
-            margin: "5px",
+            padding: 0,
+            margin: 0,
           }}
         >
           {movies.map((movie) => (
@@ -71,14 +70,23 @@ function Home() {
                 cursor: "pointer",
                 flexShrink: 0,
                 textAlign: "center",
-                transition: "transform 0.25s",
+                boxShadow: "2px 2px 6px gray",
+                transition: "all 0.3s ease-in-out",
+                borderRadius: "12px",
+                padding: "10px",
+                backgroundColor: "white",
               }}
-              onMouseEnter={(e) =>
-                (e.currentTarget.style.transform = "scale(1.05)")
-              }
-              onMouseLeave={(e) =>
-                (e.currentTarget.style.transform = "scale(1)")
-              }
+              onMouseEnter={(e) => {
+                e.currentTarget.style.boxShadow =
+                  "0 8px 20px rgba(0,0,0,0.8)";
+                e.currentTarget.style.transform = "scale(1.05)";
+                e.currentTarget.style.backgroundColor = "#f5f7fa";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.boxShadow = "2px 2px 6px gray";
+                e.currentTarget.style.transform = "scale(1)";
+                e.currentTarget.style.backgroundColor = "white";
+              }}
             >
               <img
                 src={movie.imageUrl}
@@ -88,9 +96,9 @@ function Home() {
                   height: "240px",
                   objectFit: "cover",
                   borderRadius: "12px",
-                  boxShadow: "0 6px 12px rgba(0,0,0,0.4)",
                   display: "block",
                   margin: "0 auto",
+                  boxShadow: "0 4px 8px rgba(0,0,0,0.5)",
                 }}
                 onError={(e) =>
                   (e.currentTarget.src =
@@ -101,6 +109,7 @@ function Home() {
                 style={{
                   marginTop: "10px",
                   fontSize: "16px",
+                  color: "black",
                   whiteSpace: "nowrap",
                   overflow: "hidden",
                   textOverflow: "ellipsis",
@@ -112,6 +121,15 @@ function Home() {
           ))}
         </ul>
       </div>
+
+      {/* 👇 Extra inline CSS to hide scrollbars in WebKit (Chrome, Safari, Edge) */}
+      <style>
+        {`
+          div::-webkit-scrollbar {
+            display: none;
+          }
+        `}
+      </style>
     </div>
   );
 }
