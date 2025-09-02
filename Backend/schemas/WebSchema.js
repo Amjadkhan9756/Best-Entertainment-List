@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 
-const ContentSchema = new mongoose.Schema({
-    id: String,
+const WebSchema = new mongoose.Schema({
     title: String,
     releaseDate: String,
     duration: String,
@@ -19,6 +18,6 @@ const ContentSchema = new mongoose.Schema({
 });
 
 
-const Content = mongoose.model("Content", ContentSchema);
+const Web = mongoose.model("Content", WebSchemaSchema);
 
-module.exports = Content; //Moies
+module.exports = Web; //Moies
