@@ -18,11 +18,10 @@ const ContentSchema = new mongoose.Schema({
     imageUrl: String,
 });
 
+const Web = mongoose.model("Web", ContentSchema);
 
-const Content = mongoose.model("Content", ContentSchema);
+module.exports = Web; //webs
 
-module.exports = Content; //Moies
+// const Content = mongoose.model("Content", ContentSchema);
 
-// const Web = mongoose.model("Web", ContentSchema);
-
-// module.exports = Web; //webs
+// module.exports = Content; //Moies

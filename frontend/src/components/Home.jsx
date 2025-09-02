@@ -35,7 +35,21 @@ function Home() {
         color: "#fff",
       }}
     >
-      <h1 style={{ margin: "10px", padding: "15px", color: "black" }}>
+      <h1
+        style={{
+          margin: "10px",
+          padding: "15px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center", // centers horizontally
+          fontWeight: "bold",
+          fontSize: "2rem",
+          background: "linear-gradient(to right, #ff7eb3, #5f62ff)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+          textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
+        }}
+      >
         🎬 Top Movies to Watch
       </h1>
 
@@ -74,18 +88,17 @@ function Home() {
                 transition: "all 0.3s ease-in-out",
                 borderRadius: "12px",
                 padding: "10px",
-                backgroundColor: "white",
+                backgroundColor: " #d47bfe59",
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.boxShadow =
-                  "0 8px 20px rgba(0,0,0,0.8)";
+                e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.8)";
                 e.currentTarget.style.transform = "scale(1.05)";
                 e.currentTarget.style.backgroundColor = "#f5f7fa";
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.boxShadow = "2px 2px 6px gray";
                 e.currentTarget.style.transform = "scale(1)";
-                e.currentTarget.style.backgroundColor = "white";
+                e.currentTarget.style.backgroundColor = " #d47bfe59";
               }}
             >
               <img
