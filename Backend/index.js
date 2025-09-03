@@ -4,7 +4,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const Content = require("./schemas/ContentSchema.js"); //For movies in home 
 
-// const Web = require("./schemas/ContentSchema.js"); // for series in home 
+const Web = require("./schemas/WebSchema.js"); // for series in home 
 
 const app = express();
 app.use(express.json());
@@ -444,53 +444,6 @@ app.get("/addMovies", async(req, res) => {
         res.status(500).json({ error: "Error fetching movies" });
     }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

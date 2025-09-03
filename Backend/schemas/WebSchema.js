@@ -18,6 +18,6 @@ const WebSchema = new mongoose.Schema({
 });
 
 
-const Web = mongoose.model("Content", WebSchemaSchema);
+const Web = mongoose.model("Web", WebSchema);
 
 module.exports = Web; //Moies
