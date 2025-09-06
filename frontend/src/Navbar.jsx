@@ -6,7 +6,16 @@ const Navbar = () => {
       <div className="row">
         <nav
           className="navbar navbar-expand-lg"
-          style={{ backgroundColor: "lightpink", minHeight: "80px" }}
+          style={{
+            background: "linear-gradient(135deg, #66eacd79 0%, #764ba2 100%)",
+            minHeight: "80px",
+            backdropFilter: "blur(10px)",
+            boxShadow: "0 8px 32px 0 rgba(31, 38, 135, 0.37)",
+            border: "1px solid rgba(255, 255, 255, 0.18)",
+            position: "sticky",
+            top: 0,
+            zIndex: 1000,
+          }}
         >
           {/* Logo Section */}
           <div className="container col-2 d-flex align-items-center">
@@ -14,10 +23,10 @@ const Navbar = () => {
               src="/image/Monogram ER Logo Design By Vectorseller _ TheHungryJPEG.jpeg"
               alt="Logo"
               style={{
-                width: "70px",          // fixed width
-                height: "70px",         // fixed height
-                objectFit: "cover",     // prevents stretching
-                borderRadius: "50%",    // makes it circular
+                width: "70px", // fixed width
+                height: "70px", // fixed height
+                objectFit: "cover", // prevents stretching
+                borderRadius: "50%", // makes it circular
                 border: "2px solid white", // optional white border
               }}
             />

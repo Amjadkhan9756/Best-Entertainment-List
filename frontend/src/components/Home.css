@@ -1,3 +1,7 @@
 body {
-    background: linear-gradient(to right, #7bf5fe8a, #d4ff5f59)
+    background: linear-gradient(135deg, #1a7e76e1 0%, #642e7d49 35%, #5d4937ad 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
 }
