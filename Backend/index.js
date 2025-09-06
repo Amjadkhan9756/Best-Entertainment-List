@@ -1056,6 +1056,15 @@ app.get("/addMovies", async(req, res) => {
 
 
 
+app.get("/addWebseries", async(req, res) => {
+    try {
+        const Webs = await Web.find();
+        res.json(Webs);
+    } catch (err) {
+        res.status(500).json({ error: "Error fetching movies" });
+    }
+});
+
 
 
 
@@ -1443,6 +1452,17 @@ app.get("/addMovies", async(req, res) => {
 
 
 // });
+
+
+app.get("/addAnime", async(req, res) => {
+    try {
+        const Animes = await Anime.find();
+        res.json(Animes);
+    } catch (err) {
+        res.status(500).json({ error: "Error fetching movies" });
+    }
+});
+
 
 
 
@@ -1835,7 +1855,14 @@ app.get("/addMovies", async(req, res) => {
 
 
 
-
+app.get("/addKdrama", async(req, res) => {
+    try {
+        const Kdramas = await Kdrama.find();
+        res.json(Kdramas);
+    } catch (err) {
+        res.status(500).json({ error: "Error fetching movies" });
+    }
+});
 
 
 
