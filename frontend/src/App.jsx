@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 
 import Home from "./components/Home";
-// import Footer from "./Footer";
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Movies from './components/Movies';
 import HmovieDetal from './components/HmovieDetal';
@@ -16,7 +16,7 @@ function App() {
         <Route path="/movie/:id" element={<HmovieDetal/>}/>
         <Route path='/movies'element={<Movies/>}/>
       </Routes>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 }
