@@ -31,59 +31,64 @@ function HmovieDetal() {
         color: "#fff",
       }}
     >
-<div
-  style={{
-    background: "linear-gradient(135deg, #66baeaff 0%, #744ba2d7 100%)",
-    color: "#fff",
-    width: "70%",
-    height: "100%",
-    margin: "0 auto",
-    marginTop: "15px",
-    paddingTop: "15px",
-    borderRadius: "30px",
-    boxShadow: "12px 12px 10px black", // ✅ removed 'solid'
-  }}
->
-
-
+      <div
+        style={{
+          background: "linear-gradient(135deg, #66baeaff 0%, #744ba2d7 100%)",
+          color: "#fff",
+          width: "70%",
+          height: "100%",
+          margin: "0 auto",
+          marginTop: "15px",
+          paddingTop: "15px",
+          borderRadius: "30px",
+          boxShadow: "12px 12px 10px black", 
+        }}
+      >
         <div className="row">
           <div className="col">
-            {" "}
-            <img 
-            style={{
-              paddingLeft:'6px',
-              paddingBottom:'3px',
-              borderRadius:'30px',
-              boxShadow:'6px 6px 8px black',
-            }}
-            src={movie.imageUrl} alt={movie.title} />
+            <img
+              style={{
+                paddingLeft: "16px",
+                paddingBottom: "3px",
+                borderRadius: "30px",
+                boxShadow: "6px 6px 8px black",
+              }}
+              src={movie.imageUrl}
+              alt={movie.title}
+            />
           </div>
           <div className="col">
-            {" "}
+            <h1
+              style={{
+                fontSize: "48px",
+                fontWeight: "800",
+                marginBottom: "20px",
+                letterSpacing: "-1px",
+                lineHeight: "1.2",
+                textShadow: "0 0 80px rgba(102, 126, 234, 0.5)", // ✅ added comma
+              }}
+            >
+              {movie.title}
+            </h1>
             <p>Release Date: {movie.releaseDate}</p>
             <p>Duration: {movie.duration}</p>
-            <p>Rating: {movie.rating}</p>
-            <h1>{movie.title}</h1>
+            <p>Rating:  ⭐ {movie.rating}</p>
             <p>IMDb: {movie.imdbRating}</p>
           </div>
         </div>
         <div className="row">
           <div className="col">
-            {" "}
             <p>Writers: {movie.writers?.join(", ")}</p>
           </div>
           <div className="col">
-            {" "}
             <p>Director: {movie.director}</p>
           </div>
         </div>
         <div className="row">
           <div className="col">
-            {" "}
             <p>Actors: {movie.actors?.join(", ")}</p>
           </div>
           <div className="col">
-            {" "}
             <p>Actresses: {movie.actresses?.join(", ")}</p>
           </div>
         </div>
@@ -96,9 +101,6 @@ function HmovieDetal() {
 }
 
 export default HmovieDetal;
-
-
-
 
 
 
