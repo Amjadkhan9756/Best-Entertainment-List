@@ -82,17 +82,21 @@ function HmovieDetal() {
       >
         <div className="row">
           <div className="col">
-            <img
-              style={{
-                paddingLeft: "16px",
-                paddingBottom: "3px",
-                borderRadius: "30px",
-                boxShadow: "6px 6px 8px black",
-              }}
-              src={movie.imageUrl}
-              alt={movie.title}
-            />
-          </div>
+  <img
+    style={{
+      paddingLeft: "16px",
+      paddingBottom: "3px",
+      borderRadius: "30px",
+      boxShadow: "6px 6px 8px black",
+      transition: "transform 0.3s ease-in-out", // smooth animation
+    }}
+    src={movie.imageUrl}
+    alt={movie.title}
+    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
+    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
+  />
+</div>
+
           <div className="col">
             <h1
               style={{
