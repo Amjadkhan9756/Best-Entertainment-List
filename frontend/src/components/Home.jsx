@@ -47,7 +47,44 @@ function Home() {
     fetchData();
   }, []);
 
-  if (loading) return <div>Loading...</div>;
+if (loading) {
+  return (
+    <div
+      style={{
+        height: "100vh",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <div
+        style={{
+          background: "#f57c00",
+          color: "#fff",
+          padding: "20px 40px",
+          borderRadius: "12px",
+          fontWeight: "700",
+          fontSize: "20px",
+          animation: "pulse 1.5s infinite",
+        }}
+      >
+        Loading...
+      </div>
+
+      <style>
+        {`
+          @keyframes pulse {
+            0% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 1; }
+          }
+        `}
+      </style>
+    </div>
+  );
+}
+
+
   if (error) return <div>Error: {error}</div>;
 
   return (
