@@ -3935,6 +3935,22 @@ app.get("/addKdrama", async(req, res) => {
 //     res.send("all Done");
 // });
 
+
+
+
+
+
+app.get("/addMovieData", async(req, res) => {
+    try {
+        const Movies = await MovieData.find();
+        res.json(Movies);
+    } catch (err) {
+        res.status(500).json({ error: "Error fetching movies" });
+    }
+});
+
+
+
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);
