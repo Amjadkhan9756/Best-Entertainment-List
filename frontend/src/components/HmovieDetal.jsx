@@ -84,6 +84,7 @@ function HmovieDetal() {
           <div className="col">
   <img
     style={{
+      objectFit:'cover',
       paddingLeft: "16px",
       paddingBottom: "3px",
       borderRadius: "30px",
