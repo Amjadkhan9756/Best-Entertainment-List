@@ -15,7 +15,7 @@ function App() {
         <Route path='/' element={<Home />} />
         <Route path="/movie/:id" element={<HmovieDetal />} />
         <Route path='/movies' element={<Movies />} />
-        <Route path='/movie-details/:id' element={<NmovieDetail />} /> {/* Different path to avoid conflict */}
+        <Route path='/movies/:id' element={<NmovieDetail />} /> {/* Different path to avoid conflict */}
       </Routes>
       <Footer />
     </Router>
