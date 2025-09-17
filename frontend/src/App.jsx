@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Movies from './components/Movies';
 import HmovieDetal from './components/HmovieDetal'; // Using original filename
-import NmovieDetail from './components/NmovieDetail';
+import NmovieDetail from './components/movieDetail';
 import Webseries from './components/Webseries';
 import Animeseries from './components/Animeseries';
 

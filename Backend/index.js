@@ -2,11 +2,11 @@ require("dotenv").config();
 
 const express = require("express");
 const mongoose = require("mongoose");
-const Content = require("./schemas/ContentSchema.js"); //For movies in home
 
+const Content = require("./schemas/ContentSchema.js"); //For movies in home
 const Web = require("./schemas/WebSchema.js"); // for series in home
 
-const Anime = require("./schemas/AnimeSchema.js");
+const Animee = require("./schemas/AnimeeSchema.js");
 const Kdrama = require("./schemas/KdramaSchema.js");
 
 //Navbar
@@ -814,9 +814,9 @@ app.get("/addWebseries", async(req, res) => {
 
 // Anime data
 
-// app.get("/addAnime", (req, res) => {
+// app.get("/addAnimee", (req, res) => {
 
-//     let tempAnime = [{
+//     let tempAnimee = [{
 //             "id": "21",
 //             "title": "Attack on Titan",
 //             "releaseDate": "2013-2023",
@@ -1158,8 +1158,8 @@ app.get("/addWebseries", async(req, res) => {
 //         }
 //     ]
 
-//     tempAnime.forEach((item) => {
-//         let newAnime = new Anime({
+//     tempAnimee.forEach((item) => {
+//         let newAnimee = new Animee({
 //             id: item.id,
 //             title: item.title,
 //             releaseDate: item.releaseDate,
@@ -1177,15 +1177,15 @@ app.get("/addWebseries", async(req, res) => {
 //             story: item.story,
 //             imageUrl: item.imageUrl
 //         });
-//         newAnime.save();
+//         newAnimee.save();
 //     });
 //     res.send("ALL done");
 
 // });
 
-app.get("/addAnime", async(req, res) => {
+app.get("/addAnimee", async(req, res) => {
     try {
-        const Animes = await Anime.find();
+        const Animes = await Animee.find();
         res.json(Animes);
     } catch (err) {
         res.status(500).json({ error: "Error fetching movies" });

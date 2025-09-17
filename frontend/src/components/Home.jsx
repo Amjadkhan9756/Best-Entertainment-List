@@ -7,7 +7,7 @@ import "./Home.css";
 function Home() {
   const [movies, setMovies] = useState([]);
   const [Web, setWeb] = useState([]);
-  const [Anime, setAnime] = useState([]);
+  const [Animee, setAnimee] = useState([]);
 
   const [Kdrama, setKdrama] = useState([]);
 
@@ -25,7 +25,7 @@ function Home() {
           "http://localhost:8080/addWebseries"
         );
         const AnimeSeriesResponse = await axios.get(
-          "http://localhost:8080/addAnime"
+          "http://localhost:8080/addAnimee"
         );
 
         const KdramaSeriesResponse = await axios.get(
@@ -34,7 +34,7 @@ function Home() {
 
         setMovies([...moviesResponse.data]);
         setWeb([...webSeriesResponse.data]);
-        setAnime([...AnimeSeriesResponse.data]);
+        setAnimee([...AnimeSeriesResponse.data]);
         setKdrama([...KdramaSeriesResponse.data]);
 
         setLoading(false);
@@ -326,7 +326,7 @@ if (loading) {
               textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
             }}
           >
-            🎬 Top Web-series to Watch
+            🎬 Top Animee to Watch
           </h1>
 
           {/* ✅ SCROLL CONTAINER WITH VISIBLE SCROLLBAR */}
@@ -347,7 +347,7 @@ if (loading) {
                 margin: 0,
               }}
             >
-              {Anime.map((movie) => (
+              {Animee.map((movie) => (
                 <li
                   key={movie._id}
                   onClick={() => navigate(`/movie/${movie._id}`)}

@@ -2,7 +2,7 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function NmovieDetal() {
+function movieDetal() {
   const { id } = useParams();
 
   const [movie, setMovie] = useState([]);
@@ -290,4 +290,4 @@ function NmovieDetal() {
   );
 }
 
-export default NmovieDetal;
+export default movieDetal;

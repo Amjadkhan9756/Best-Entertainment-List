@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const AnimeSchema = new mongoose.Schema({
+const AnimeeSchema = new mongoose.Schema({
+    id: String,
     title: String,
     releaseDate: String,
     duration: String,
@@ -14,10 +15,9 @@ const AnimeSchema = new mongoose.Schema({
     actors: [String],
     actresses: [String],
     story: String,
-    imageUrl: String,
+    imageUrl: String
 });
 
+const Animee = mongoose.model("Animee", AnimeeSchema);
 
-const Anime = mongoose.model("Anime", AnimeSchema);
-
-module.exports = Anime;
+module.exports = Animee;
