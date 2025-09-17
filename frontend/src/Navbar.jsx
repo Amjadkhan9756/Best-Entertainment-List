@@ -55,8 +55,8 @@ const Navbar = () => {
                   </a>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/anime-series">
-                    Anime-series
+                  <Link className="nav-link active" to="/animeseries">
+                    AnimeSeries
                   </Link>
                 </li>
                 <li className="nav-item">
