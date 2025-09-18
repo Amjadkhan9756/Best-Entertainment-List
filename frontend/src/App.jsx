@@ -8,6 +8,7 @@ import HmovieDetal from './components/HmovieDetal'; // Using original filename
 import NmovieDetail from './components/movieDetail';
 import Webseries from './components/Webseries';
 import Animeseries from './components/Animeseries';
+import Kdrama from './components/Kdrama';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/movies/:id' element={<NmovieDetail />} /> {/* Different path to avoid conflict */}
         <Route path='/webseries' element={<Webseries/>}/>
         <Route path='/animeseries' element={<Animeseries/>}/>
+        <Route path='/kdrama' element={<Kdrama/>}/>
       </Routes>
       <Footer />
     </Router>
