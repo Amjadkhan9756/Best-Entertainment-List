@@ -10,12 +10,9 @@ function Kdrama() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    setLoading(true);
     axios
-      .get("http://localhost:8080/addKdramaData") // ✅ backend must return JSON array
+      .get("http://localhost:8080/addKdramaData")
       .then((res) => {
-        // if backend returns { kdramas: [...] }
-        // setKdrama(res.data.kdramas);
         setKdrama(res.data);
         setLoading(false);
       })
@@ -25,7 +22,6 @@ function Kdrama() {
       });
   }, []);
 
-  // ✅ Loading screen
   if (loading) {
     return (
       <div
@@ -63,10 +59,10 @@ function Kdrama() {
     );
   }
 
-  // ✅ Error screen
-  if (error) return <div>Error: {error}</div>;
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
-  // ✅ Main content
   return (
     <>
       <h1
@@ -79,9 +75,8 @@ function Kdrama() {
           color: "#fff",
         }}
       >
-        Kdramas To Watch
+        Top Kdrama to watch
       </h1>
-
       <div
         style={{
           display: "grid",
@@ -91,10 +86,10 @@ function Kdrama() {
           listStyle: "none",
         }}
       >
-        {kdrama.map((drama) => (
+        {kdrama.map((allkdrama) => (
           <div
-            key={drama._id || drama.id} // ✅ use _id from Mongo or fallback id
-         
+            key={allkdrama._id}
+            onClick={() => navigate(`/Kdrama/${allkdrama._id}`)}
             style={{
               minWidth: "160px",
               cursor: "pointer",
@@ -128,10 +123,11 @@ function Kdrama() {
                 borderRadius: "10px",
                 boxShadow: "12px 12px 20px black",
               }}
-              src={drama.imageUrl || "https://via.placeholder.com/200x300"}
-              alt={drama.title || "No Title"}
+              src={allkdrama.imgUrl}
+              alt={allkdrama.title}
+              width="200"
+              height="300"
             />
-
             <h3
               style={{
                 fontSize: "18px",
@@ -142,7 +138,7 @@ function Kdrama() {
                 marginTop: "15px",
               }}
             >
-              {drama.title || "Untitled"}
+              {allkdrama.title}
             </h3>
           </div>
         ))}

@@ -6258,7 +6258,7 @@ app.get("/addWebSeriesData", async(req, res) => {
 //             actors: ["David Matranga", "Yûki Kaji"],
 //             actresses: ["Satomi Sato", "Hiro Shimono"],
 //             story: "A family is attacked by demons and only two members survive - Tanjiro and his sister Nezuko, who is turning into a demon slowly. Tanjiro sets out to become a demon slayer to avenge his family and cure his sister.",
-//             imageUrl: "https://m.media-amazon.com/images/S/pv-target-images/1a28caac129bed86dbf1fe3d474c2017379e39f5aac7082123ecc39ed6ce16b5._UR1920,1080_.jpg"
+//             imageUrl: "https://m.media-amazon.com/images/M/MV5BNDUyZTJmODQtZmRkMS00YjJiLTgxZmUtMjQ5OGNjNzkyM2Y5XkEyXkFqcGc@._V1_.jpg"
 //         },
 //         {
 //             id: "2",
@@ -6275,7 +6275,7 @@ app.get("/addWebSeriesData", async(req, res) => {
 //             actors: ["David Matranga", "Yûki Kaji"],
 //             actresses: ["Marina Inoue", "Yui Ishikawa"],
 //             story: "After his hometown is destroyed, young Eren Jaeger vows to cleanse the earth of the giant humanoid Titans that have brought humanity to the brink of extinction.",
-//             imageUrl: "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRA8TiN10pdApt0e_B_A2dBqBvQVcAMndFVLn9CuR7fU8wrmeNCgRiWFl0xoZfv_DigDRNk5ijq1vBc5qCvneiY7BDMMoAaRnpwICuanA"
+//             imageUrl: "https://imgsrv.crunchyroll.com/cdn-cgi/image/fit=cover,format=auto,quality=85,width=1920/keyart/GR751KNZY-backdrop_wide"
 //         },
 //         {
 //             id: "3",

@@ -60,8 +60,8 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <Link className="nav-link active" to="/k-drama">
-                    K-drama
+                  <Link className="nav-link active" to="/kdrama">
+                    Kdrama
                   </Link>
                 </li>
               </ul>
