@@ -2,17 +2,28 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-function HmovieDetal() {
+function HDetal() {
   const { id } = useParams();
-  const [movie, setMovie] = useState(null);
+  const [data, setData] = useState(null); // can be movie, webseries, animee, kdrama
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    axios
-      .get("http://localhost:8080/addMovies") // fetch all movies
-      .then((res) => {
-        const foundMovie = res.data.find((m) => m._id === id);
-        setMovie(foundMovie);
+    const endpoints = [
+      { url: "http://localhost:8080/addMovies", type: "Movie" },
+      { url: "http://localhost:8080/addWebseries", type: "Webseries" },
+      { url: "http://localhost:8080/addAnimee", type: "Animee" },
+      { url: "http://localhost:8080/addKdrama", type: "Kdrama" },
+    ];
+
+    Promise.all(endpoints.map((ep) => axios.get(ep.url)))
+      .then((responses) => {
+        for (let i = 0; i < responses.length; i++) {
+          const found = responses[i].data.find((m) => m._id === id);
+          if (found) {
+            setData({ ...found, type: endpoints[i].type });
+            break;
+          }
+        }
         setLoading(false);
       })
       .catch((err) => {
@@ -28,7 +39,7 @@ function HmovieDetal() {
           height: "100vh",
           display: "flex",
           justifyContent: "center",
-          alignItems: "center", // fixed
+          alignItems: "center",
         }}
       >
         <div
@@ -47,7 +58,7 @@ function HmovieDetal() {
 
         <style>
           {`
-          @keyframes pulse {  /* fixed */
+          @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
             50% { transform: scale(1.1); opacity: 0.7; }
             100% { transform: scale(1); opacity: 1; }
@@ -58,7 +69,7 @@ function HmovieDetal() {
     );
   }
 
-  if (!movie) return <div>Movie not found</div>;
+  if (!data) return <div>❌ Not found in Movies, Webseries, Animee, or Kdrama</div>;
 
   return (
     <div
@@ -72,7 +83,6 @@ function HmovieDetal() {
           background: "linear-gradient(135deg, #66baeaff 0%, #744ba2d7 100%)",
           color: "#fff",
           width: "75%",
-          height: "100%",
           margin: "0 auto",
           marginTop: "15px",
           paddingTop: "15px",
@@ -82,21 +92,25 @@ function HmovieDetal() {
       >
         <div className="row">
           <div className="col">
-  <img
-    style={{
-      objectFit:'cover',
-      paddingLeft: "16px",
-      paddingBottom: "3px",
-      borderRadius: "30px",
-      boxShadow: "6px 6px 8px black",
-      transition: "transform 0.3s ease-in-out", // smooth animation
-    }}
-    src={movie.imageUrl}
-    alt={movie.title}
-    onMouseEnter={(e) => (e.currentTarget.style.transform = "scale(1.05)")}
-    onMouseLeave={(e) => (e.currentTarget.style.transform = "scale(1)")}
-  />
-</div>
+            <img
+              style={{
+                objectFit: "cover",
+                paddingLeft: "16px",
+                paddingBottom: "3px",
+                borderRadius: "30px",
+                boxShadow: "6px 6px 8px black",
+                transition: "transform 0.3s ease-in-out",
+              }}
+              src={data.imageUrl}
+              alt={data.title}
+              onMouseEnter={(e) =>
+                (e.currentTarget.style.transform = "scale(1.05)")
+              }
+              onMouseLeave={(e) =>
+                (e.currentTarget.style.transform = "scale(1)")
+              }
+            />
+          </div>
 
           <div className="col">
             <h1
@@ -107,88 +121,64 @@ function HmovieDetal() {
                   "linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
-                backgroundClip: "text",
                 marginBottom: "20px",
-                letterSpacing: "-1px",
-                lineHeight: "1.2",
-                textShadow: "0 0 80px rgba(102, 126, 234, 0.5)",
               }}
             >
-              {movie.title}
+              {data.title}{" "}
+              <span style={{ fontSize: "22px", color: "#ffa726" }}>
+                ({data.type})
+              </span>
             </h1>
+
             <div
               style={{
                 background: "linear-gradient(135deg, #f57c00, #ffb74d)",
-                display: "flex", // keep only one
                 padding: "10px 20px",
                 borderRadius: "50px",
                 fontWeight: "700",
-                color: "#fff",
-                alignItems: "center",
-                gap: "8px",
-                boxShadow: "0 10px 30px rgba(254,124,0,0.4)",
+                marginBottom: "10px",
               }}
             >
-              IMDb: {movie.imdbRating}
+              IMDb: {data.imdbRating}
             </div>
-            <br></br>
+
             <p
               style={{
                 background: "linear-gradient(135deg, #f57c00, #ffb74d)",
-                display: "flex",
                 padding: "12px",
                 borderRadius: "50px",
                 fontWeight: "700",
-                color: "#fff",
-                gap: "10px",
-                boxShadow: "0 10px 30px rgba(254,124,0,0.4)",
-                alignItems: "center", // ensures ⭐ aligns nicely with text
               }}
             >
-              Rating: ⭐ {movie.rating}
+              Rating: ⭐ {data.rating}
             </p>
 
             <p
               style={{
                 background: "linear-gradient(135deg, #f57c00, #ffb74d)",
-                display: "flex", // keep only one
                 padding: "10px 20px",
                 borderRadius: "50px",
                 fontWeight: "700",
-                color: "#fff",
-                alignItems: "center",
-                gap: "8px",
-                boxShadow: "0 10px 30px rgba(254,124,0,0.4)",
               }}
             >
-              Release Date: {movie.releaseDate}
+              Release Date: {data.releaseDate}
             </p>
+
             <p
               style={{
                 background: "linear-gradient(135deg, #f57c00, #ffb74d)",
-                display: "flex", // keep only one
                 padding: "10px 20px",
                 borderRadius: "50px",
                 fontWeight: "700",
-                color: "#fff",
-                alignItems: "center",
-                gap: "8px",
-                boxShadow: "0 10px 30px rgba(254,124,0,0.4)",
               }}
             >
-              Duration: {movie.duration}
+              Duration: {data.duration}
             </p>
           </div>
         </div>
-        <div
-          className="row"
-          style={{
-            marginTop: "20px",
-            display: "flex",
-            paddingLeft: "12px",
-            padding: "15px",
-          }}
-        >
+
+        {/* Writers & Director */}
+        <div className="row" style={{ marginTop: "20px", padding: "15px" }}>
           <div
             className="col"
             style={{
@@ -198,7 +188,7 @@ function HmovieDetal() {
               boxShadow: "8px 8px 10px black",
             }}
           >
-            <p>Writers: {movie.writers?.join(", ")}</p>
+            <p>Writers: {data.writers?.join(", ")}</p>
           </div>
           <div className="col-2"></div>
           <div
@@ -210,19 +200,12 @@ function HmovieDetal() {
               boxShadow: "8px 8px 10px black",
             }}
           >
-            <p>Director: {movie.director}</p>
+            <p>Director: {data.director}</p>
           </div>
         </div>
-        <br></br>
-        <div
-          className="row"
-          style={{
-            marginTop: "20px",
-            display: "flex",
-            paddingLeft: "12px",
-            padding: "15px",
-          }}
-        >
+
+        {/* Actors & Actresses */}
+        <div className="row" style={{ marginTop: "20px", padding: "15px" }}>
           <div
             className="col"
             style={{
@@ -232,7 +215,7 @@ function HmovieDetal() {
               boxShadow: "8px 8px 10px black",
             }}
           >
-            <p>Actors: {movie.actors?.join(", ")}</p>
+            <p>Actors: {data.actors?.join(", ")}</p>
           </div>
           <div className="col-2"></div>
           <div
@@ -244,36 +227,24 @@ function HmovieDetal() {
               boxShadow: "8px 8px 10px black",
             }}
           >
-            <p>Actresses: {movie.actresses?.join(", ")}</p>
+            <p>Actresses: {data.actresses?.join(", ")}</p>
           </div>
         </div>
-             
-       {/* Story Section */}
-      <div style={{
-          background: 'rgba(255, 255, 255, 0.02)',
-          padding: '35px',
-          borderRadius: '25px',
-          border: '1px solid rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(5px)'
-        }}>
-          <h2 style={{
-            fontSize: '28px',
-            fontWeight: '700',
-            color: '#fff',
-            marginBottom: '20px',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '10px'
-          }}>
+
+        {/* Story */}
+        <div
+          style={{
+            background: "rgba(255, 255, 255, 0.02)",
+            padding: "35px",
+            borderRadius: "25px",
+            marginTop: "20px",
+          }}
+        >
+          <h2 style={{ fontSize: "28px", fontWeight: "700", color: "#fff" }}>
             📖 Story
           </h2>
-          <p style={{
-            color: 'rgba(255, 255, 255, 0.85)',
-            fontSize: '18px',
-            lineHeight: '1.8',
-            letterSpacing: '0.3px'
-          }}>
-            {movie.story}
+          <p style={{ color: "rgba(255, 255, 255, 0.85)", fontSize: "18px" }}>
+            {data.story}
           </p>
         </div>
       </div>
@@ -281,19 +252,4 @@ function HmovieDetal() {
   );
 }
 
-export default HmovieDetal;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+export default HDetal;

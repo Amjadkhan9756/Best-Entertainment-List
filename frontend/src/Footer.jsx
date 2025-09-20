@@ -168,9 +168,9 @@ const Footer = () => {
                 </h6>
                 <div>
                   <span style={skillBadgeStyle}>Java</span>
-                  <span style={skillBadgeStyle}>JavaScript</span>
                   <span style={skillBadgeStyle}>Python</span>
-                  <span style={skillBadgeStyle}>C++</span>
+
+                  <span style={skillBadgeStyle}>JavaScript</span>
                   <span style={skillBadgeStyle}>HTML5</span>
                   <span style={skillBadgeStyle}>CSS3</span>
                 </div>
@@ -299,7 +299,7 @@ const Footer = () => {
                   <span style={coreSubjectBadgeStyle}>
                     Full Stack Development
                   </span>
-                  <br/>
+                  <br />
                   <span style={coreSubjectBadgeStyle}>REST APIs</span>
                 </div>
               </div>
