@@ -89,7 +89,7 @@ function Animeseries() {
         {anime.map((allAnime) => (
           <div
             key={allAnime._id}
-            onClick={() => navigate(`/Anime/${allAnime._id}`)}
+            onClick={() => navigate(`/anime/${allAnime._id}`)}
             style={{
               minWidth: "160px",
               cursor: "pointer",
