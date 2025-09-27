@@ -9,11 +9,14 @@ import Animeseries from './components/Animeseries';
 import Kdrama from './components/Kdrama';
 import HDetal from './components/HDetal.jsx';
 import NDetal from './components/NDetail.jsx';
+import TopData from './components/TopData.jsx';
 
 function App() {
   return (
     <Router>
       <Navbar />
+      <TopData/>
+      
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path="/movie/:id" element={<HDetal/>}/>

@@ -10,12 +10,14 @@ const Animee = require("./schemas/AnimeeSchema.js");
 const Kdrama = require("./schemas/KdramaSchema.js");
 
 //Navbar
+const topData = require("./NavbarSchema/TopSchema.js");
 
 const MovieData = require("./NavbarSchema/MoviesSchema.js");
 const SeriesData = require("./NavbarSchema/WebSchema.js");
 const AnimeData = require("./NavbarSchema/AnimeSchema.js");
 
 const KdramaData = require("./NavbarSchema/KdramaSchema.js")
+
 
 
 const app = express();
@@ -32,6 +34,251 @@ mongoose
 app.get("/", (req, res) => {
     res.send("✅ API is working and connected to MongoDB Atlas!");
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Top Content  
+
+
+// app.get("/TopContent", (req, res) => {
+
+
+//     const tempTopContent = [{
+//             id: "1",
+//             title: "Avengers: Endgame",
+//             releaseDate: "2019-04-26",
+//             duration: "181 min",
+//             rating: "PG-13",
+//             imdbRating: 8.4,
+//             metascore: 78,
+//             votes: "1,200,000",
+//             genre: ["Action", "Adventure", "Drama"],
+//             director: ["Anthony Russo", "Joe Russo"],
+//             writers: ["Christopher Markus", "Stephen McFeely"],
+//             actors: ["Robert Downey Jr.", "Chris Evans", "Mark Ruffalo", "Chris Hemsworth"],
+//             actresses: ["Scarlett Johansson", "Brie Larson", "Gwyneth Paltrow"],
+//             story: "After the devastating events of Avengers: Infinity War, the universe is in ruins. With the help of remaining allies, the Avengers assemble once more to reverse Thanos' actions and restore balance to the universe.",
+//             imageUrl: "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/7b350a2f-0b3e-4033-8125-34c4d67e3bbe/compose?aspectRatio=1.78&format=webp&width=1200"
+//         },
+//         {
+//             id: "2",
+//             title: "Avatar",
+//             releaseDate: "2009-12-18",
+//             duration: "162 min",
+//             rating: "PG-13",
+//             imdbRating: 7.9,
+//             metascore: 83,
+//             votes: "1,400,000",
+//             genre: ["Action", "Adventure", "Fantasy", "Sci-Fi"],
+//             director: ["James Cameron"],
+//             writers: ["James Cameron"],
+//             actors: ["Sam Worthington", "Stephen Lang", "Joel David Moore"],
+//             actresses: ["Zoe Saldana", "Sigourney Weaver", "Michelle Rodriguez"],
+//             story: "A paraplegic Marine dispatched to the moon Pandora on a unique mission becomes torn between following his orders and protecting the world he feels is his home.",
+//             imageUrl: "https://disney.images.edge.bamgrid.com/ripcut-delivery/v2/variant/disney/4e0ee81e-104d-46e4-b89d-287f81d70498/compose?aspectRatio=1.78&format=webp&width=1200"
+//         },
+//         {
+//             id: "3",
+//             title: "Dark",
+//             releaseDate: "2017-12-01",
+//             duration: "60 min",
+//             rating: "TV-MA",
+//             imdbRating: 8.7,
+//             metascore: 82,
+//             votes: "400,000",
+//             genre: ["Drama", "Mystery", "Sci-Fi", "Thriller"],
+//             director: ["Baran bo Odar", "Jantje Friese"],
+//             writers: ["Baran bo Odar", "Jantje Friese"],
+//             actors: ["Louis Hofmann", "Oliver Masucci", "Jördis Triebel"],
+//             actresses: ["Maja Schöne", "Lisa Vicari", "Gina Stiebitz"],
+//             story: "A family saga with a supernatural twist, set in a German town where the disappearance of two young children exposes the relationships among four families.",
+//             imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdfArwG4GJXicm3NbOXyI8VzX_AGRrJqafjmi-XxNrpLY8M5kSYqPg6_Eddnc7HW3W1HcgcbEBSucgZlUqXpKHpKfRyRzF0toPE4MNxjo"
+//         },
+//         {
+//             id: "4",
+//             title: "Breaking Bad",
+//             releaseDate: "2008-01-20",
+//             duration: "47 min",
+//             rating: "TV-MA",
+//             imdbRating: 9.5,
+//             metascore: 99,
+//             votes: "1,800,000",
+//             genre: ["Crime", "Drama", "Thriller"],
+//             director: ["Vince Gilligan"],
+//             writers: ["Vince Gilligan"],
+//             actors: ["Bryan Cranston", "Aaron Paul", "Dean Norris", "Betsy Brandt"],
+//             actresses: ["Anna Gunn", "RJ Mitte"],
+//             story: "A chemistry teacher diagnosed with inoperable lung cancer turns to manufacturing and selling methamphetamine with a former student to secure his family's future.",
+//             imageUrl: "https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQ8JwFpAMKH-ScL1KUSHF-gM9eq91j66br_zJukl7ctXxmQfDO7U2gHikSb7nXOonrARS6OYYh8HHE5yjU28shwkXWpG9FtkuYXu4vJrxk"
+//         },
+//         {
+//             id: "5",
+//             title: "Game of Thrones",
+//             releaseDate: "2011-04-17",
+//             duration: "57 min",
+//             rating: "TV-MA",
+//             imdbRating: 9.2,
+//             metascore: 92,
+//             votes: "2,100,000",
+//             genre: ["Action", "Adventure", "Drama", "Fantasy"],
+//             director: ["David Benioff", "D.B. Weiss"],
+//             writers: ["David Benioff", "D.B. Weiss", "George R.R. Martin"],
+//             actors: ["Sean Bean", "Peter Dinklage", "Kit Harington", "Nikolaj Coster-Waldau"],
+//             actresses: ["Emilia Clarke", "Lena Headey", "Sophie Turner", "Maisie Williams"],
+//             story: "Nine noble families fight for control over the lands of Westeros, while an ancient enemy returns after being dormant for millennia.",
+//             imageUrl: "https://m.media-amazon.com/images/M/MV5BMTNhMDJmNmYtNDQ5OS00ODdlLWE0ZDAtZTgyYTIwNDY3OTU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+//         },
+//         {
+//             id: "6",
+//             title: "All of Us Are Dead",
+//             releaseDate: "2022-01-28",
+//             duration: "60 min",
+//             rating: "TV-MA",
+//             imdbRating: 7.5,
+//             metascore: 68,
+//             votes: "120,000",
+//             genre: ["Action", "Drama", "Horror", "Thriller"],
+//             director: ["Lee JQ", "Kim Nam-su"],
+//             writers: ["Chun Sung-il"],
+//             actors: ["Park Ji-hu", "Yoon Chan-young", "Cho Yi-hyun"],
+//             actresses: ["Park Ji-hu", "Cho Yi-hyun", "Lomon"],
+//             story: "A high school becomes ground zero for a zombie virus outbreak. Trapped students must fight their way out or turn into one of the rabid infected.",
+//             imageUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/2/24/All_of_Us_Are_Dead.jpeg/250px-All_of_Us_Are_Dead.jpeg"
+//         },
+//         {
+//             id: "7",
+//             title: "When Life Gives You Tangerines",
+//             releaseDate: "2021-03-15",
+//             duration: "45 min",
+//             rating: "TV-14",
+//             imdbRating: 7.8,
+//             metascore: 75,
+//             votes: "25,000",
+//             genre: ["Drama", "Romance", "Slice of Life"],
+//             director: ["Kim So-hyun"],
+//             writers: ["Lee Min-jung"],
+//             actors: ["Park Seo-joon", "Kim Min-jae"],
+//             actresses: ["IU", "Park Min-young"],
+//             story: "A heartwarming story about finding love and purpose in unexpected places, set against the backdrop of a small coastal town known for its tangerine orchards.",
+//             imageUrl: "https://i.pinimg.com/236x/da/cf/f6/dacff633222cc4f6ccdf4520ce9e91f6.jpg"
+//         },
+//         {
+//             id: "8",
+//             title: "One Piece",
+//             releaseDate: "1999-10-20",
+//             duration: "24 min",
+//             rating: "TV-14",
+//             imdbRating: 9.0,
+//             metascore: 85,
+//             votes: "500,000",
+//             genre: ["Animation", "Action", "Adventure", "Comedy"],
+//             director: ["Eiichiro Oda"],
+//             writers: ["Eiichiro Oda"],
+//             actors: ["Mayumi Tanaka", "Akemi Okamura", "Kazuya Nakai"],
+//             actresses: ["Mayumi Tanaka", "Akemi Okamura", "Nico Robin"],
+//             story: "Follows the adventures of Monkey D. Luffy and his pirate crew in order to find the greatest treasure ever left by the legendary Pirate, Gold Roger.",
+//             imageUrl: "https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcRTbihNRmETkXmJvpOy1Y-AvdgHVkLZ8A8_kvBsJ0y6NkB2uvzvHxvEzcyd-oy74sADzmFp-Ml9C3bryfesct9J-DiTbipNHJsp41DAdw"
+//         },
+//         {
+//             id: "9",
+//             title: "Attack on Titan",
+//             releaseDate: "2013-04-07",
+//             duration: "24 min",
+//             rating: "TV-MA",
+//             imdbRating: 9.0,
+//             metascore: 88,
+//             votes: "450,000",
+//             genre: ["Animation", "Action", "Drama", "Fantasy"],
+//             director: ["Wit Studio", "MAPPA"],
+//             writers: ["Hajime Isayama"],
+//             actors: ["Eren Yeager", "Mikasa Ackerman", "Armin Arlert"],
+//             actresses: ["Mikasa Ackerman", "Annie Leonhart", "Sasha Blouse"],
+//             story: "Humanity fights for survival against giant humanoid Titans that have brought civilization to the brink of extinction.",
+//             imageUrl: "https://m.media-amazon.com/images/M/MV5BZjliODY5MzQtMmViZC00MTZmLWFhMWMtMjMwM2I3OGY1MTRiXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg"
+//         },
+//         {
+//             id: "10",
+//             title: "Vinland Saga",
+//             releaseDate: "2019-07-08",
+//             duration: "24 min",
+//             rating: "TV-MA",
+//             imdbRating: 8.8,
+//             metascore: 85,
+//             votes: "180,000",
+//             genre: ["Animation", "Action", "Adventure", "Drama"],
+//             director: ["Shuhei Yabuta"],
+//             writers: ["Makoto Yukimura"],
+//             actors: ["Thorfinn", "Askeladd", "Canute"],
+//             actresses: ["Gudrid", "Ylva"],
+//             story: "Follow Thorfinn, a young Viking warrior, on his journey of revenge and eventual path to finding a new purpose in medieval Europe.",
+//             imageUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9LGC-wZfWFzzYOkvacIrwSP9_rNozQIRQzKyhXr8cq8E4Fykjv1Wa9caJySJ3oxq64iU&usqp=CAU"
+//         }
+//     ];
+
+//     tempTopContent.forEach((item) => {
+//         let newData = new topData({
+
+//             id: item.id,
+//             title: item.title,
+//             releaseDate: item.releaseDate,
+//             duration: item.duration,
+//             rating: item.rating,
+//             imdbRating: item.imdbRating,
+//             metascore: item.metascore,
+//             votes: item.votes,
+//             genre: item.genre,
+//             director: item.director,
+//             writers: item.writers,
+//             actors: item.actors,
+//             actresses: item.actresses,
+
+//             story: item.story,
+//             imageUrl: item.imageUrl
+//         });
+//         newData.save();
+//     });
+//     res.send("Donee");
+
+// });
+
+
+
+app.get("/TopContent", async(req, res) => {
+    try {
+        const Data = await topData.find();
+        res.json(Data);
+    } catch (err) {
+        res.status(500).json({ error: "Error fetching movies" });
+    }
+});
+
+
+
+
+
+
 
 // completed in home
 
