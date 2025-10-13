@@ -143,7 +143,11 @@ function TopData() {
           onClick={() => navigate(`/movies/${alldata._id}`)}
         >
           <img src={alldata.imageUrl} alt={alldata.title} />
-          <h3>{alldata.title}</h3>
+          <h3
+          style={{
+            color:'red'
+          }}
+          >{alldata.title}</h3>
         </div>
       ))}
     </div>
