@@ -6,13 +6,14 @@ function Kdrama() {
   const [kdrama, setKdrama] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
 
+  // Fetch Kdrama Data
   useEffect(() => {
     axios
       .get("http://localhost:8080/addKdramaData")
       .then((res) => {
+        console.log("Kdrama Data:", res.data); // 👈 Debug: check what backend returns
         setKdrama(res.data);
         setLoading(false);
       })
@@ -22,6 +23,7 @@ function Kdrama() {
       });
   }, []);
 
+  // Loading State
   if (loading) {
     return (
       <div
@@ -59,10 +61,12 @@ function Kdrama() {
     );
   }
 
+  // Error State
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div style={{ color: "red", textAlign: "center" }}>Error: {error}</div>;
   }
 
+  // Main Return
   return (
     <>
       <h1
@@ -75,31 +79,29 @@ function Kdrama() {
           color: "#fff",
         }}
       >
-        Top Kdrama to watch
+        🎬 Top Kdramas to Watch
       </h1>
+
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
           gap: "20px",
           padding: "20px",
-          listStyle: "none",
         }}
       >
-        {kdrama.map((allkdrama) => (
+        {kdrama.map((drama) => (
           <div
-            key={allkdrama._id}
-            onClick={() => navigate(`/Kdrama/${allkdrama._id}`)}
+            key={drama._id}
+            onClick={() => navigate(`/kdrama/${drama._id}`)}
             style={{
-              minWidth: "160px",
               cursor: "pointer",
-              flexShrink: 0,
               textAlign: "center",
               boxShadow: "2px 2px 6px gray",
               transition: "all 0.3s ease-in-out",
               borderRadius: "12px",
               padding: "10px",
-              backgroundColor: " #d47bfe59",
+              backgroundColor: "#d47bfe59",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.8)";
@@ -109,12 +111,20 @@ function Kdrama() {
             onMouseLeave={(e) => {
               e.currentTarget.style.boxShadow = "2px 2px 6px gray";
               e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.backgroundColor = " #d47bfe59";
+              e.currentTarget.style.backgroundColor = "#d47bfe59";
             }}
           >
             <img
+              src={
+                drama.imageUrl ||
+                drama.imgUrl ||
+                drama.image ||
+                "https://via.placeholder.com/400x600?text=No+Image"
+              }
+              alt={drama.title || "Kdrama Poster"}
+              width="200"
+              height="300"
               style={{
-                marginTop: "0",
                 display: "block",
                 margin: "0 auto",
                 width: "200px",
@@ -123,10 +133,9 @@ function Kdrama() {
                 borderRadius: "10px",
                 boxShadow: "12px 12px 20px black",
               }}
-              src={allkdrama.imgUrl}
-              alt={allkdrama.title}
-              width="200"
-              height="300"
+              onError={(e) =>
+                (e.target.src = "https://via.placeholder.com/400x600?text=No+Image")
+              }
             />
             <h3
               style={{
@@ -138,7 +147,7 @@ function Kdrama() {
                 marginTop: "15px",
               }}
             >
-              {allkdrama.title}
+              {drama.title}
             </h3>
           </div>
         ))}

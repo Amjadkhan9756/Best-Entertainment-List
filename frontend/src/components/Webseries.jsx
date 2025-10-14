@@ -6,7 +6,6 @@ function Webseries() {
   const [webseries, setWebseries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,13 +16,13 @@ function Webseries() {
         setLoading(false);
       })
       .catch((err) => {
-        console.log(err.message || "Something went wrong");
+        console.error(err.message || "Something went wrong");
         setError(err.message);
         setLoading(false);
       });
   }, []);
 
- 
+  // 🌀 Loading Screen
   if (loading) {
     return (
       <div
@@ -60,41 +59,61 @@ function Webseries() {
       </div>
     );
   }
-  if (error) return <div>Error: {error}</div>;
 
+  // ❌ Error Screen
+  if (error) {
+    return (
+      <div
+        style={{
+          color: "red",
+          textAlign: "center",
+          marginTop: "50px",
+          fontWeight: "bold",
+        }}
+      >
+        Error: {error}
+      </div>
+    );
+  }
+
+  // ✅ Main Render
   return (
     <>
-      <h1    style={{
+      <h1
+        style={{
           padding: "10px",
           margin: "10px",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
           color: "#fff",
-        }}>Top Web-Series to Watch</h1>
+          fontSize: "28px",
+        }}
+      >
+        Top Web-Series to Watch
+      </h1>
+
       <div
-      style={{
-        display:'grid',
-          gridTemplateColumns: "repeat(5, 1fr)",
-          gap:'20px',
-          padding:"20px",
-          listStyle:'none',
-      }}
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+          gap: "20px",
+          padding: "20px",
+        }}
       >
         {webseries.map((allSeries) => (
           <div
             key={allSeries._id}
-            onClick={() => navigate(`/movies/${allSeries._id}`)}
-                style={{
+            onClick={() => navigate(`/webseries/${allSeries._id}`)}
+            style={{
               minWidth: "160px",
               cursor: "pointer",
-              flexShrink: 0,
               textAlign: "center",
               boxShadow: "2px 2px 6px gray",
               transition: "all 0.3s ease-in-out",
               borderRadius: "12px",
               padding: "10px",
-              backgroundColor: " #d47bfe59",
+              backgroundColor: "#d47bfe59",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.8)";
@@ -104,11 +123,18 @@ function Webseries() {
             onMouseLeave={(e) => {
               e.currentTarget.style.boxShadow = "2px 2px 6px gray";
               e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.backgroundColor = " #d47bfe59";
+              e.currentTarget.style.backgroundColor = "#d47bfe59";
             }}
           >
-            <img   style={{
-                marginTop: "0",
+            <img
+              src={
+                allSeries.imageUrl ||
+                allSeries.image ||
+                allSeries.imgUrl ||
+                "https://via.placeholder.com/400x600?text=No+Image"
+              }
+              alt={allSeries.title}
+              style={{
                 display: "block",
                 margin: "0 auto",
                 width: "200px",
@@ -116,15 +142,17 @@ function Webseries() {
                 objectFit: "cover",
                 borderRadius: "10px",
                 boxShadow: "12px 12px 20px black",
-              }} src={allSeries.imgUrl} alt={allSeries.title} />
-            <h3    style={{
+              }}
+            />
+            <h3
+              style={{
                 fontSize: "18px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
                 color: "white",
                 marginTop: "15px",
-              }}>{allSeries.title}</h3>
+              }}
+            >
+              {allSeries.title}
+            </h3>
           </div>
         ))}
       </div>

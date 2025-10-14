@@ -22,6 +22,7 @@ function Animeseries() {
       });
   }, []);
 
+  // 🌀 Loading State
   if (loading) {
     return (
       <div
@@ -59,10 +60,23 @@ function Animeseries() {
     );
   }
 
+  // ❌ Error State
   if (error) {
-    return <div>Error: {error}</div>;
+    return (
+      <div
+        style={{
+          color: "red",
+          textAlign: "center",
+          marginTop: "50px",
+          fontWeight: "bold",
+        }}
+      >
+        Error: {error}
+      </div>
+    );
   }
 
+  // ✅ Main UI
   return (
     <>
       <h1
@@ -73,17 +87,18 @@ function Animeseries() {
           justifyContent: "center",
           alignItems: "center",
           color: "#fff",
+          fontSize: "28px",
         }}
       >
-        Top Anime to watch
+        Top Anime to Watch
       </h1>
+
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "repeat(5, 1fr)",
+          gridTemplateColumns: "repeat(auto-fit, minmax(250px, 1fr))",
           gap: "20px",
           padding: "20px",
-          listStyle: "none",
         }}
       >
         {anime.map((allAnime) => (
@@ -91,15 +106,13 @@ function Animeseries() {
             key={allAnime._id}
             onClick={() => navigate(`/anime/${allAnime._id}`)}
             style={{
-              minWidth: "160px",
               cursor: "pointer",
-              flexShrink: 0,
               textAlign: "center",
               boxShadow: "2px 2px 6px gray",
               transition: "all 0.3s ease-in-out",
               borderRadius: "12px",
               padding: "10px",
-              backgroundColor: " #d47bfe59",
+              backgroundColor: "#d47bfe59",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.boxShadow = "0 8px 20px rgba(0,0,0,0.8)";
@@ -109,12 +122,18 @@ function Animeseries() {
             onMouseLeave={(e) => {
               e.currentTarget.style.boxShadow = "2px 2px 6px gray";
               e.currentTarget.style.transform = "scale(1)";
-              e.currentTarget.style.backgroundColor = " #d47bfe59";
+              e.currentTarget.style.backgroundColor = "#d47bfe59";
             }}
           >
             <img
+              src={
+                allAnime.imageUrl ||
+                allAnime.image ||
+                allAnime.imgUrl ||
+                "https://via.placeholder.com/400x600?text=No+Image"
+              }
+              alt={allAnime.title}
               style={{
-                marginTop: "0",
                 display: "block",
                 margin: "0 auto",
                 width: "200px",
@@ -123,19 +142,13 @@ function Animeseries() {
                 borderRadius: "10px",
                 boxShadow: "12px 12px 20px black",
               }}
-              src={allAnime.imgUrl}
-              alt={allAnime.title}
-              width="200"
-              height="300"
             />
             <h3
               style={{
                 fontSize: "18px",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
                 color: "white",
                 marginTop: "15px",
+                wordWrap: "break-word",
               }}
             >
               {allAnime.title}
