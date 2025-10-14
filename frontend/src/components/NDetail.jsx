@@ -11,8 +11,8 @@ function NDetal() {
     const endpoints = [
       { url: "http://localhost:8080/addMovieData", type: "Movie" },
       { url: "http://localhost:8080/addWebSeriesData", type: "Webseries" },
-      { url: "http://localhost:8080/animeData", type: "Anime" },
-      { url: "http://localhost:8080/addKdramaData", type: "Kdrama" },
+      // { url: "http://localhost:8080/animeData", type: "Anime" },
+      // { url: "http://localhost:8080/addKdramaData", type: "Kdrama" },
     ];
 
     Promise.all(endpoints.map((ep) => axios.get(ep.url)))
