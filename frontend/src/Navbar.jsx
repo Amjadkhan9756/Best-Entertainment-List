@@ -23,21 +23,18 @@ const Navbar = () => {
               src="/image/Monogram ER Logo Design By Vectorseller _ TheHungryJPEG.jpeg"
               alt="Logo"
               style={{
-                width: "70px", // fixed width
-                height: "70px", // fixed height
-                objectFit: "cover", // prevents stretching
-                borderRadius: "50%", // makes it circular
-                border: "2px solid white", // optional white border
+                width: "70px",
+                height: "70px",
+                objectFit: "cover",
+                borderRadius: "50%",
+                border: "2px solid white",
               }}
             />
           </div>
 
           {/* Links & Search */}
           <div className="container-fluid">
-            <div
-              className="collapse navbar-collapse"
-              id="navbarSupportedContent"
-            >
+            <div className="collapse navbar-collapse" id="navbarSupportedContent">
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 <li className="nav-item">
                   <Link className="nav-link active" to="/">
@@ -45,40 +42,50 @@ const Navbar = () => {
                   </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active" href="/movies">
+                  <Link className="nav-link active" to="/movies">
                     Movies
-                  </a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link active" href="/webseries">
-                    Web-series
-                  </a>
+                  <Link className="nav-link active" to="/webseries">
+                    Web Series
+                  </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link active" to="/animeseries">
-                    AnimeSeries
+                    Anime Series
                   </Link>
                 </li>
                 <li className="nav-item">
                   <Link className="nav-link active" to="/kdrama">
-                    Kdrama
+                    K-Drama
                   </Link>
                 </li>
               </ul>
 
-              {/* Search bar */}
-              <form className="d-flex" role="search">
-                <input
-                  className="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  aria-label="Search"
-                  style={{ borderRadius: "20px" }}
-                />
-                <button className="btn btn-outline-success" type="submit">
-                  Search
-                </button>
-              </form>
+              {/* Auth Buttons */}
+              <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li className="nav-item">
+                  <Link style={
+                    {
+                      backgroundColor:'grey',
+                      borderRadius:'15px',
+                      margin:'5px'
+                    }
+                  } className="nav-link active" to="/register">
+                    Register
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link style={{
+                    backgroundColor:'lightgrey',
+                    borderRadius:'15px',
+                    margin:'5px'
+                  }} className="nav-link active" to="/login">
+                    Login
+                  </Link>
+                </li>
+              </ul>
             </div>
           </div>
         </nav>
