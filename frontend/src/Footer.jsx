@@ -1,4 +1,23 @@
 const Footer = () => {
+  const linkStyle = {
+    color: "#ffffff",
+    textDecoration: "none",
+    padding: "12px 20px",
+    borderRadius: "8px",
+    background: "rgba(255, 255, 255, 0.1)",
+    border: "1px solid rgba(255, 255, 255, 0.2)",
+    display: "block",
+    marginBottom: "12px",
+    transition: "all 0.3s ease",
+    fontSize: "15px",
+    fontWeight: "500",
+  };
+
+  const linkHoverStyle = {
+    background: "rgba(255, 255, 255, 0.2)",
+    transform: "translateX(5px)",
+  };
+
   return (
     <footer
       style={{
@@ -113,7 +132,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Technical Skills Section */}
+          {/* Web Series & Movies Section */}
           <div style={{ flex: "1", minWidth: "280px" }}>
             <div
               style={{
@@ -139,68 +158,44 @@ const Footer = () => {
                   gap: "10px",
                 }}
               >
-                <span>💻</span> Technical Skills
+                <span>🎬</span> Web Series & Movies  (website for watching )
               </h4>
-
-              {[
-                {
-                  title: "Programming Languages",
-                  color: "#87ceeb",
-                  skills: ["Java", "Python", "JavaScript", "HTML5", "CSS3"],
-                },
-                {
-                  title: "MERN Stack",
-                  color: "#87ceeb",
-                  skills: ["MongoDB", "Express.js", "React.js", "Node.js"],
-                },
-                {
-                  title: "Frameworks & Libraries",
-                  color: "#87ceeb",
-                  skills: ["Bootstrap", "Tailwind CSS", "Redux"],
-                },
-                {
-                  title: "Tools & Technologies",
-                  color: "#87ceeb",
-                  skills: ["Git/GitHub", "VS Code", "Postman"],
-                },
-              ].map((section, i) => (
-                <div key={i} style={{ marginBottom: "20px" }}>
-                  <h6
-                    style={{
-                      color: section.color,
-                      marginBottom: "12px",
-                      fontSize: "16px",
-                    }}
-                  >
-                    {section.title}
-                  </h6>
-                  <div>
-                    {section.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        style={{
-                          background: "linear-gradient(45deg, #667eea, #764ba2)",
-                          color: "white",
-                          padding: "8px 16px",
-                          borderRadius: "20px",
-                          fontSize: "13px",
-                          fontWeight: "500",
-                          margin: "4px",
-                          display: "inline-block",
-                          boxShadow: "0 4px 15px rgba(102, 126, 234, 0.3)",
-                          transition: "transform 0.3s ease",
-                        }}
-                      >
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <a 
+                href="https://net20.cc/home" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={linkStyle}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+                  e.currentTarget.style.transform = "translateX(5px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.transform = "translateX(0)";
+                }}
+              >
+                🎥 Netmirror - Stream Movies
+              </a>
+              <a 
+                href="https://multimovies.center/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={linkStyle}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+                  e.currentTarget.style.transform = "translateX(5px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.transform = "translateX(0)";
+                }}
+              >
+                🎞️ MultiMovies Center
+              </a>
             </div>
           </div>
 
-          {/* Core Subjects Section */}
+          {/* Anime Section */}
           <div style={{ flex: "1", minWidth: "280px" }}>
             <div
               style={{
@@ -226,74 +221,40 @@ const Footer = () => {
                   gap: "10px",
                 }}
               >
-                <span>📚</span> Core Subjects
+                <span>📺</span> Anime Streaming  (website for watching )
               </h4>
-
-              {[
-                {
-                  title: "Computer Science Fundamentals",
-                  color: "#98fb98",
-                  subjects: [
-                    "Object-Oriented Programming",
-                    "Database Management System",
-                    "Computer Networks",
-                    "Aptitude",
-                  ],
-                },
-                {
-                  title: "Problem Solving",
-                  color: "#98fb98",
-                  subjects: [
-                    "Data Structures & Algorithms",
-                    "Quantitative Aptitude",
-                    "Pattern Recognition",
-                  ],
-                },
-                {
-                  title: "Web Development",
-                  color: "#98fb98",
-                  subjects: [
-                    "Frontend Development",
-                    "Backend Development",
-                    "Full Stack Development",
-                    "REST APIs",
-                  ],
-                },
-              ].map((section, i) => (
-                <div key={i} style={{ marginBottom: "20px" }}>
-                  <h6
-                    style={{
-                      color: section.color,
-                      marginBottom: "12px",
-                      fontSize: "16px",
-                    }}
-                  >
-                    {section.title}
-                  </h6>
-                  <div>
-                    {section.subjects.map((sub) => (
-                      <span
-                        key={sub}
-                        style={{
-                          background:
-                            "linear-gradient(45deg, #f093fb, #f5576c)",
-                          color: "white",
-                          padding: "8px 16px",
-                          borderRadius: "20px",
-                          fontSize: "13px",
-                          fontWeight: "500",
-                          margin: "4px",
-                          display: "inline-block",
-                          boxShadow:
-                            "0 4px 15px rgba(240, 147, 251, 0.3)",
-                        }}
-                      >
-                        {sub}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
+              <a 
+                href="https://hianime.cv/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={linkStyle}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+                  e.currentTarget.style.transform = "translateX(5px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.transform = "translateX(0)";
+                }}
+              >
+                ⚡ HiAnime - Watch Anime
+              </a>
+              <a 
+                href="https://aniwatch.com.ro/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                style={linkStyle}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.2)";
+                  e.currentTarget.style.transform = "translateX(5px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(255, 255, 255, 0.1)";
+                  e.currentTarget.style.transform = "translateX(0)";
+                }}
+              >
+                🌟 AniWatch - Anime Hub
+              </a>
             </div>
           </div>
         </div>
