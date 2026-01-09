@@ -13,6 +13,7 @@ import KdramaD from "./components/KdramaD.jsx";
 import AnimeD from "./components/AnimeD.jsx";
 import WebseriesD from "./components/WebseriesD.jsx";
 import MoviesD from "./components/MoviesD.jsx";
+import Registation from "./Registation.jsx";
 
 function App() {
   return (
@@ -24,14 +25,15 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/movie/:id" element={<HDetal />} />
         <Route path="/movies" element={<Movies />} />
-        <Route path="/movies/:id" element={<MoviesD/>}/>
+        <Route path="/movies/:id" element={<MoviesD />} />
         <Route path="/webseries" element={<Webseries />} />
-        <Route path="/webseries/:id" element={<WebseriesD/>}/>
+        <Route path="/webseries/:id" element={<WebseriesD />} />
         <Route path="/animeseries" element={<Animeseries />} />
-                <Route path="anime/:id" element={<AnimeD/>}/>
+        <Route path="anime/:id" element={<AnimeD />} />
 
         <Route path="/kdrama" element={<Kdrama />} />
-                <Route path="/kdrama/:id" element={<KdramaD />} />
+        <Route path="/kdrama/:id" element={<KdramaD />} />
+        <Route path="/login" element={<Registation/>}/>
 
       </Routes>
       <Footer />

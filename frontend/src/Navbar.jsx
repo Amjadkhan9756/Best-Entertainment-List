@@ -65,7 +65,7 @@ const Navbar = () => {
 
               {/* Auth Buttons */}
               <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link style={
                     {
                       backgroundColor:'grey',
@@ -75,7 +75,7 @@ const Navbar = () => {
                   } className="nav-link active" to="/register">
                     Register
                   </Link>
-                </li>
+                </li> */}
                 <li className="nav-item">
                   <Link style={{
                     backgroundColor:'lightgrey',
