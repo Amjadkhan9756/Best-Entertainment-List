@@ -1,5 +1,5 @@
-require("dotenv").config();
-
+// require("dotenv").config();
+const dotenv = require("dotenv")
 const express = require("express");
 const mongoose = require("mongoose");
 
@@ -18,7 +18,7 @@ const AnimeData = require("./NavbarSchema/AnimeSchema.js");
 
 const KdramaData = require("./NavbarSchema/KdramaSchema.js")
 
-
+dotenv.config();
 
 const app = express();
 app.use(express.json());
