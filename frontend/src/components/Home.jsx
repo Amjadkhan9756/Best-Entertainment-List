@@ -111,7 +111,7 @@ if (loading) {
             textShadow: "1px 1px 2px rgba(0,0,0,0.2)",
           }}
         >
-          🎬 Top Movies to Watch
+          🎬 Top best Movies to Watch
         </h1>
 
         {/* ✅ SCROLL CONTAINER WITH VISIBLE SCROLLBAR */}
