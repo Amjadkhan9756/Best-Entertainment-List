@@ -68,7 +68,7 @@ if (loading) {
           animation: "pulse 1.5s infinite",
         }}
       >
-        Loading...
+        uploading.....
       </div>
 
       <style>
