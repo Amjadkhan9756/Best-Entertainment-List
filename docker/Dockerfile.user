@@ -1,0 +1,19 @@
+FROM node:22-alpine
+
+ENV NODE_ENV=production \
+    PORT=8080
+
+WORKDIR /app
+
+COPY Backend/package.json ./package.json
+RUN npm install --omit=dev --no-audit --no-fund
+
+COPY --chown=node:node Backend/index.js ./index.js
+COPY --chown=node:node Backend/NavbarSchema ./NavbarSchema
+COPY --chown=node:node Backend/schemas ./schemas
+
+USER node
+
+EXPOSE 8080
+
+CMD ["node", "index.js"]
